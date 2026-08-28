@@ -23,10 +23,23 @@ namespace DotNetApiDemo.Controllers
         public List<Post> GetAll() { 
 
             var posts = _dbContext.Posts.ToList();
-
             return  posts;
 
+        }
 
+        [HttpPost]
+
+        public Post Add(Post post)
+        {
+            post.CreatedDate = DateTime.Now;
+            _dbContext.Posts.Add(post);
+            bool isSaved = _dbContext.SaveChanges() > 0;
+
+            if(isSaved)
+            {
+                return post;
+            }
+            return null;
         }
 
 

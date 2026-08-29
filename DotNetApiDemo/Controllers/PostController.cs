@@ -1,4 +1,5 @@
 ﻿using DotNetApiDemo.Context;
+using DotNetApiDemo.Interfaces.Manager;
 using DotNetApiDemo.Manager;
 using DotNetApiDemo.Models;
 using Microsoft.AspNetCore.Http;
@@ -12,14 +13,19 @@ namespace DotNetApiDemo.Controllers
     public class PostController : ControllerBase
     {
 
-        ApplicationDbContext _dbContext;
-        PostManager _postManager;
+        //ApplicationDbContext _dbContext;
+        IPostManager _postManager;
 
 
-        public PostController(ApplicationDbContext dbContext)
+        //public PostController(ApplicationDbContext dbContext)
+        //{
+        //    _dbContext = dbContext;
+       
+        //}
+
+        public PostController(IPostManager postManager)
         {
-            _dbContext = dbContext;
-            _postManager = new PostManager(dbContext);
+           _postManager = postManager;
         }
 
         [HttpGet]

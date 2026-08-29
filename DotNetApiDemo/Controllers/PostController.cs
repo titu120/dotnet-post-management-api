@@ -41,7 +41,7 @@ namespace DotNetApiDemo.Controllers
         [HttpGet]
         public Post GetById(int id)
         {
-            var post = _postManager.GetFirstOrDefault(c => c.Id == id);
+            var post = _postManager.GetById(id);
             return post;
         }
 

@@ -13,5 +13,10 @@ namespace DotNetApiDemo.Manager
         {
 
         }
+
+        public Post GetById(int id)
+        {
+            return GetFirstOrDefault(x=> x.Id == id);
+        }
     }
 }
